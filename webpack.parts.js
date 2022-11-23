@@ -38,7 +38,7 @@ exports.loadCSS = () => ({
  *  fast-sass-loader -> faster loader than sass-loader
  *  MiniCssExtractPlugin -> will extract the marked scss files into a main css file
  */
-exports.loadSASS = () => ({
+exports.loadSASS = ({ loaders = {} } = {}) => ({
   module: {
     rules: [
       {
@@ -47,9 +47,17 @@ exports.loadSASS = () => ({
           MiniCssExtractPlugin.loader,
           { loader: "css-loader", options: { importLoaders: 1 } },
           "fast-sass-loader",
-        ],
+        ].concat(loaders),
       },
     ],
   },
   plugins: [new MiniCssExtractPlugin()],
+});
+
+/** Autoprefixer: helps with vendor prefixes */
+exports.autoprefix = () => ({
+  loader: "postcss-loader",
+  options: {
+    postcssOptions: { plugins: [require("autoprefixer")()] },
+  },
 });
