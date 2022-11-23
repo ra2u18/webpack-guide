@@ -1,5 +1,6 @@
 const { MiniHtmlWebpackPlugin } = require("mini-html-webpack-plugin");
 const { WebpackPluginServe } = require("webpack-plugin-serve");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 exports.devServer = () => ({
   watch: true,
@@ -33,19 +34,22 @@ exports.loadCSS = () => ({
 
 /** Loaders for SCSS/SASS files
  *
+ *  MiniCssExtractPlugin.loader -> will mark css files for the plugin
  *  fast-sass-loader -> faster loader than sass-loader
+ *  MiniCssExtractPlugin -> will extract the marked scss files into a main css file
  */
 exports.loadSASS = () => ({
   module: {
     rules: [
       {
-        test: /\.(sass|scss)$/,
+        test: /\.(s[ac]|c)ss$/,
         use: [
-          "style-loader",
+          MiniCssExtractPlugin.loader,
           { loader: "css-loader", options: { importLoaders: 1 } },
           "fast-sass-loader",
         ],
       },
     ],
   },
+  plugins: [new MiniCssExtractPlugin()],
 });
