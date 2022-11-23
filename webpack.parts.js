@@ -13,6 +13,39 @@ exports.devServer = () => ({
   ],
 });
 
+/**
+ * Plugins to create the index.html file dynamically
+ */
 exports.page = ({ title }) => ({
   plugins: [new MiniHtmlWebpackPlugin({ context: { title: "Demo" } })],
+});
+
+/** Loaders for CSS files
+ *
+ * style-loader -> inject css into javascript as inline styles
+ * css-loader -> resolve @imports and @url
+ */
+exports.loadCSS = () => ({
+  module: {
+    rules: [{ test: /\.css$/, use: ["style-loader", "css-loader"] }],
+  },
+});
+
+/** Loaders for SCSS/SASS files
+ *
+ *  fast-sass-loader -> faster loader than sass-loader
+ */
+exports.loadSASS = () => ({
+  module: {
+    rules: [
+      {
+        test: /\.(sass|scss)$/,
+        use: [
+          "style-loader",
+          { loader: "css-loader", options: { importLoaders: 1 } },
+          "fast-sass-loader",
+        ],
+      },
+    ],
+  },
 });
