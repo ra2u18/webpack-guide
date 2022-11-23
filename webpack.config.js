@@ -8,6 +8,7 @@ const commonConfig = merge([
   { entry: ["./src"] },
   parts.page({ title: "Demo" }),
   parts.loadSASS({ loaders: cssLoaders }),
+  parts.loadImages({ limit: 15000 }),
 ]);
 
 const productionConfig = merge([]);

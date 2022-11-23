@@ -2,8 +2,11 @@
 
 body {
   background-color: cornsilk;
+  background-image: url("../assets/logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
 
   h1 {
-    font-size: g.rem(100);
+    font-size: g.rem(32);
   }
 }
