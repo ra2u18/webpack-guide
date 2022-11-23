@@ -73,3 +73,9 @@ exports.loadImages = ({ limit } = {}) => ({
     ],
   },
 });
+
+exports.loadJS = (includeDir) => ({
+  module: {
+    rules: [{ test: /\.js$/, include: includeDir, use: "babel-loader" }],
+  },
+});

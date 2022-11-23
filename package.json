@@ -11,7 +11,10 @@
     "url": "git+https://github.com/ra2u18/webpack-guide.git"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
     "autoprefixer": "^10.4.13",
+    "babel-loader": "^9.1.0",
     "css-loader": "^6.7.2",
     "fast-sass-loader": "^2.0.1",
     "mini-css-extract-plugin": "^2.7.0",
@@ -24,5 +27,8 @@
     "webpack-merge": "^5.8.0",
     "webpack-nano": "^1.1.1",
     "webpack-plugin-serve": "^1.6.0"
+  },
+  "dependencies": {
+    "@babel/preset-react": "^7.18.6"
   }
 }

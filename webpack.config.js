@@ -1,7 +1,9 @@
 const { mode } = require("webpack-nano/argv");
 const { merge } = require("webpack-merge");
 const parts = require("./webpack.parts");
+const path = require("path");
 
+const APP_SOURCE = path.join(__dirname, "src");
 const cssLoaders = [parts.autoprefix()];
 
 const commonConfig = merge([
@@ -9,6 +11,7 @@ const commonConfig = merge([
   parts.page({ title: "Demo" }),
   parts.loadSASS({ loaders: cssLoaders }),
   parts.loadImages({ limit: 15000 }),
+  parts.loadJS(APP_SOURCE),
 ]);
 
 const productionConfig = merge([]);
