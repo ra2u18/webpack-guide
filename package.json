@@ -2,6 +2,8 @@
   "main": "index.js",
   "private": "true",
   "scripts": {
+    "watch": "nodemon --watch \"./webpack.*.*\" --exec \"npm start\"",
+    "start": "wp --mode development",
     "build": "wp --mode production"
   },
   "repository": {
@@ -10,7 +12,9 @@
   },
   "devDependencies": {
     "mini-html-webpack-plugin": "^3.1.3",
+    "nodemon": "^2.0.20",
     "webpack": "^5.75.0",
-    "webpack-nano": "^1.1.1"
+    "webpack-nano": "^1.1.1",
+    "webpack-plugin-serve": "^1.6.0"
   }
 }
